@@ -5,7 +5,7 @@ use std::num::ParseIntError;
 pub fn calculator(x: String, y: String, z: String) -> i64 {
     let mut res: i64 = 0;
     let num1 = x.trim().parse::<i64>()
-        .map_err(|e| format("Error parsing x: {}", e))?;
+        .map_err(|e| format(e));
     let num2 = y.trim().parse::<i64>();
 
     let res = match z.trim() {
@@ -15,6 +15,8 @@ pub fn calculator(x: String, y: String, z: String) -> i64 {
         ":" => num1 / num2,
         _ => Err("Invalid operation"),
     };
+
+    res
 
 
 }
